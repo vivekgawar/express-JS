@@ -1,6 +1,10 @@
 const express = require('express') //express imported
 const app = express() //giving express powers to the constant app
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+
 app.get('/', function(req, res){
     res.send(('Home Page'))
 })

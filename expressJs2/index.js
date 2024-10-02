@@ -16,6 +16,12 @@ app.get('/', function(req, res){
     })
 })
 
+app.get('/file/:fileName', function(req, res){
+    fs.readFile(`./files/${req.params.fileName}`, 'utf-8', function(err, filedata){
+        res.render('show', {fileName: req.params.fileName, filedata: filedata});
+    })})
+
+
 app.post('/create', function(req, res){
     fs.writeFile(`./files/${req.body.title.split(' ').join('_')}.txt`, req.body.details, function(err){
     res.redirect('/') //redirects to / page after completion of code
